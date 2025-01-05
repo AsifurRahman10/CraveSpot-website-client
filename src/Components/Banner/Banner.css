@@ -1,0 +1,11 @@
+.carousel .thumbs {
+  @apply flex justify-center space-x-2 mt-4; /* Centers thumbnails and adds spacing */
+}
+
+.carousel .thumb {
+  @apply w-24 h-auto cursor-pointer transition-all duration-300 border border-gray-300 rounded-lg hover:border-gray-500; /* Styles each thumbnail */
+}
+
+.carousel .thumb.selected {
+  @apply border-gray-800; /* Highlight the selected thumbnail */
+}
