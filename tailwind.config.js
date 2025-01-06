@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'parallaxBg1': "url('./src/assets/home/chef-service.jpg')",
+        'parallaxBg2': "url('./src/assets/home/featured.jpg')",
 
       }
     },

@@ -4,8 +4,7 @@ import { FoodCard } from "./FoodCard";
 import { Button } from "./Button";
 
 export const OurMenu = () => {
-  const [popularFood, setPopularFood] = useState();
-  console.log(popularFood);
+  const [popularFood, setPopularFood] = useState([]);
   useEffect(() => {
     fetch("menu.json")
       .then((res) => res.json())
@@ -19,10 +18,12 @@ export const OurMenu = () => {
       <Title title={"---Check it out---"} para={"FROM OUR MENU"}></Title>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {popularFood.map((food) => (
-          <FoodCard key={food.id} food={food}></FoodCard>
+          <FoodCard key={food._id} food={food}></FoodCard>
         ))}
       </div>
-      <Button text={"View Full Menu"}></Button>
+      <div className="flex justify-center items-center mt-12">
+        <Button text={"View Full Menu"}></Button>
+      </div>
     </div>
   );
 };

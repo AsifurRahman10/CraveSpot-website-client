@@ -1,6 +1,8 @@
-export const Button = ({ text }) => {
+export const Button = ({ text, color }) => {
   return (
-    <button class="btn mt-12 block mx-auto btn-outline border-0 border-b-4 px-8 border-[#1F2937] text-[#1F2937] text-lg font-medium">
+    <button
+      className={`btn block btn-outline border-0 border-b-4 px-8 border-${color} text-${color} text-lg font-medium`}
+    >
       {text}
     </button>
   );
