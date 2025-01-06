@@ -4,11 +4,21 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
   const navList = (
     <>
-      <li>Home</li>
-      <li>CONTACT US</li>
-      <li>DASHBOARD</li>
-      <li>Our Menu</li>
-      <li>Our Shop</li>
+      <Link to={"/"}>
+        <li>Home</li>
+      </Link>
+      <Link>
+        <li>CONTACT US</li>
+      </Link>
+      <Link>
+        <li>DASHBOARD</li>
+      </Link>
+      <Link to={"/ourMenu"}>
+        <li>Our Menu</li>
+      </Link>
+      <Link>
+        <li>Our Shop</li>
+      </Link>
     </>
   );
   return (
