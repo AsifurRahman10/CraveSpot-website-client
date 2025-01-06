@@ -2,7 +2,7 @@ import image from "../assets/home/featured.jpg";
 import { Button } from "./Button";
 export const AboutUs = () => {
   return (
-    <div className="bg-parallaxBg2 bg-cover bg-center bg-no-repeat w-11/12 md:w-9/12 mx-auto relative py-10 md:py-20 mb-10 bg-fixed">
+    <div className="bg-parallaxBg2 bg-cover my-10 md:my-20 bg-center bg-no-repeat w-11/12 md:w-9/12 mx-auto relative py-10 md:py-20 mb-10 bg-fixed">
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <div className="relative z-20">
         <div className="text-center mb-12">

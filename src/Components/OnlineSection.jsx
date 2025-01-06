@@ -12,7 +12,7 @@ import { Pagination } from "swiper/modules";
 
 export const OnlineSection = () => {
   return (
-    <div className="my-16 w-11/12 md:w-9/12 mx-auto">
+    <div className="my-10 md:my-20 w-11/12 md:w-9/12 mx-auto">
       <Title para={"---From 11:00am to 10:00pm---"} title={"ORDER ONLINE"} />
       <div>
         <Swiper
