@@ -17,7 +17,7 @@ export const ChefRecommendation = () => {
       <Title title={"CHEF RECOMMENDS"} para={"---Should Try---"}></Title>
       <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-20">
         {data.map((food) => (
-          <RecommendationCard food={food}></RecommendationCard>
+          <RecommendationCard key={food._id} food={food}></RecommendationCard>
         ))}
       </div>
     </div>

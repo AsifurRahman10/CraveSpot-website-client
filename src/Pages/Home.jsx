@@ -6,6 +6,7 @@ import { OurMenu } from "../Components/OurMenu";
 import { ContractUs } from "../Components/ContractUs";
 import { ChefRecommendation } from "../Components/ChefRecommendation";
 import { AboutUs } from "../Components/AboutUs";
+import { Testimonial } from "../Components/Testimonial";
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
       <ContractUs></ContractUs>
       <ChefRecommendation></ChefRecommendation>
       <AboutUs></AboutUs>
+      <Testimonial></Testimonial>
     </div>
   );
 };
