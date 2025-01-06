@@ -9,16 +9,15 @@ import { Navigation } from "swiper/modules";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { FaQuoteLeft } from "react-icons/fa";
+import axios from "axios";
 
 export const Testimonial = () => {
   const [data, setData] = useState([]);
   console.log(data);
   useEffect(() => {
-    fetch("reviews.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
+    axios.get("http://localhost:5000/reviews").then((res) => {
+      setData(res.data);
+    });
   }, []);
   return (
     <div className="w-11/12 md:w-9/12 mx-auto my-10 md:my-20">

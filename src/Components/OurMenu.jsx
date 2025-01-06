@@ -2,17 +2,11 @@ import { useEffect, useState } from "react";
 import { Title } from "./Title";
 import { FoodCard } from "./FoodCard";
 import { Button } from "./Button";
+import { useMenu } from "../Hooks/useMenu";
 
 export const OurMenu = () => {
-  const [popularFood, setPopularFood] = useState([]);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const popularFood = data.filter((item) => item.category === "popular");
-        setPopularFood(popularFood);
-      });
-  }, []);
+  const [menu] = useMenu();
+  const popularFood = menu.filter((item) => item.category === "popular");
   return (
     <div className="w-11/12 md:w-9/12 mx-auto my-10 md:my-20">
       <Title title={"---Check it out---"} para={"FROM OUR MENU"}></Title>

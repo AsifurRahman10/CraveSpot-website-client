@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
 import { Title } from "./Title";
 import { RecommendationCard } from "./RecommendationCard";
+import { useMenu } from "../Hooks/useMenu";
 
 export const ChefRecommendation = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const shuffleData = [...data].sort(() => Math.random() - 0.5);
-        setData(shuffleData.slice(0, 3));
-      });
-  }, []);
+  const [menu] = useMenu();
+  const shuffleData = [...menu].sort(() => Math.random() - 0.5);
+  const data = shuffleData.slice(0, 3);
   return (
     <div className="my-10 md:my-20">
       <Title title={"CHEF RECOMMENDS"} para={"---Should Try---"}></Title>

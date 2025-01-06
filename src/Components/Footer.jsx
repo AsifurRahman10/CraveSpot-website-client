@@ -1,8 +1,9 @@
 export const Footer = () => {
   return (
     <footer>
-      <div className="footer text-white gap-0">
-        <aside className="bg-[#1F2937] w-full h-full py-10 md:py-20 flex flex-col items-end text-center pr-20">
+      <div className="footer text-white flex gap-0 items-stretch">
+        {/* First div */}
+        <aside className="bg-[#1F2937] w-1/2 py-10 md:py-20 flex flex-col items-end text-center pr-20">
           <p>
             <span className="text-2xl font-bold textTitle">
               CraveSpot Limited
@@ -15,10 +16,12 @@ export const Footer = () => {
             08:00 - 22:00 <br /> Sat - Sun: 10:00 - 23:00
           </p>
         </aside>
-        <div className="bg-[#111827] w-full h-full py-10 md:py-20 pl-20">
+
+        {/* Second div */}
+        <div className="bg-[#111827] w-1/2 py-10 md:py-20 pl-20 flex flex-col">
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
-            {/* Add actual href links */}
+            {/* Social Media Links */}
             <a
               href="https://twitter.com"
               target="_blank"
@@ -67,6 +70,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
       <div className="footer footer-center bg-black text-white p-4">
         <aside>
           <p>
