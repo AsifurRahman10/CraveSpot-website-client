@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'parallaxBg1': "url('./src/assets/home/chef-service.jpg')",
+
+      }
+    },
   },
   plugins: [
     require('daisyui'),
