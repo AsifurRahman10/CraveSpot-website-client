@@ -5,9 +5,13 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 export const Login = () => {
+  const { user, loginUser } = useContext(AuthContext);
   const captchaRef = useRef(null);
+  const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -30,7 +34,10 @@ export const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    loginUser(email, password).then((res) => {
+      console.log(res);
+      navigate("/");
+    });
   };
   return (
     <div className="bg-authBg min-h-screen bg-cover bg-center flex items-center justify-center">
@@ -95,8 +102,11 @@ export const Login = () => {
                 </button>
               </div>
             </form>
-            <p className="text-[#D1A054] text-center font-semibold">
-              New here? Create a New Account
+            <p className="text-[#D1A054] text-center">
+              New here?{" "}
+              <Link to={"/register"}>
+                <span className=" font-semibold">Create a New Account</span>
+              </Link>
             </p>
             <p className="text-center text text-sm mt-4">Or sign in with</p>
             <button className="flex justify-center items-center mt-4 ">

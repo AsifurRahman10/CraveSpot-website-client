@@ -7,9 +7,9 @@ export const MainLayout = () => {
 
   return (
     <div>
-      {pathname === "/login" || <Navbar></Navbar>}
+      {pathname === "/login" || pathname === "/register" ? null : <Navbar />}
       <Outlet></Outlet>
-      {pathname === "/login" || <Footer></Footer>}
+      {pathname === "/login" || pathname === "/register" ? null : <Footer />}
     </div>
   );
 };

@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 export const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
   const navList = (
     <>
       <Link to={"/"}>
@@ -55,9 +58,18 @@ export const Navbar = () => {
           </ul>
         </div>
         {/* Button */}
-        <Link to={"/login"} className="btn btn-primary text-white font-bold">
-          Login
-        </Link>
+        {user ? (
+          <button
+            onClick={signOutUser}
+            className="btn btn-primary text-white font-bold"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to={"/login"} className="btn btn-primary text-white font-bold">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
