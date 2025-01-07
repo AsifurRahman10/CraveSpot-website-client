@@ -16,8 +16,8 @@ export const Navbar = () => {
       <Link to={"/ourMenu"}>
         <li>Our Menu</li>
       </Link>
-      <Link>
-        <li>Our Shop</li>
+      <Link to={"/orderFood/salad"}>
+        <li>Order Food</li>
       </Link>
     </>
   );
