@@ -9,6 +9,7 @@ export default {
       backgroundImage: {
         'parallaxBg1': "url('./src/assets/home/chef-service.jpg')",
         'parallaxBg2': "url('./src/assets/home/featured.jpg')",
+        'authBg': "url('./src/assets/others/authentication.png')",
 
       }
     },

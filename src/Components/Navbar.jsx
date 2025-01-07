@@ -55,7 +55,9 @@ export const Navbar = () => {
           </ul>
         </div>
         {/* Button */}
-        <a className="btn btn-primary text-white font-bold">Button</a>
+        <Link to={"/login"} className="btn btn-primary text-white font-bold">
+          Login
+        </Link>
       </div>
     </div>
   );
