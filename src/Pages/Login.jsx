@@ -9,7 +9,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 export const Login = () => {
-  const { user, loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin } = useContext(AuthContext);
   const captchaRef = useRef(null);
   const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
@@ -27,6 +27,13 @@ export const Login = () => {
     }
   };
 
+  // google login
+  const handleGoogleLogin = () => {
+    googleLogin().then((res) => {
+      navigate("/");
+    });
+  };
+
   // handle login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,10 +42,15 @@ export const Login = () => {
     const password = form.password.value;
 
     loginUser(email, password).then((res) => {
-      console.log(res);
+      Swal.fire({
+        title: "Congrats",
+        text: "Login success",
+        icon: "success",
+      });
       navigate("/");
     });
   };
+
   return (
     <div className="bg-authBg min-h-screen bg-cover bg-center flex items-center justify-center">
       <div className="w-9/12 h-3/4 pt-16 m-auto shadow-2xl py-16">
@@ -109,7 +121,10 @@ export const Login = () => {
               </Link>
             </p>
             <p className="text-center text text-sm mt-4">Or sign in with</p>
-            <button className="flex justify-center items-center mt-4 ">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex justify-center items-center mt-4 "
+            >
               <FaGoogle className="text-2xl mb-4" />
             </button>
           </div>

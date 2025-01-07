@@ -15,16 +15,24 @@ export const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password).then((res) => {
-      updateUserdata(data.name, data.image).then((res) => {
+    createUser(data.email, data.password)
+      .then((res) => {
+        return updateUserdata(data.name, data.image);
+      })
+      .then(() => {
         navigate("/");
         Swal.fire({
-          title: "User successfully register",
+          title: "User successfully registered",
           icon: "success",
           draggable: true,
         });
       });
+  };
+
+  // google login
+  const handleGoogleLogin = () => {
+    googleLogin().then((res) => {
+      navigate("/");
     });
   };
   return (
@@ -70,7 +78,7 @@ export const Register = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold text-[#444444]">
-                    Name
+                    Email
                   </span>
                 </label>
                 <input
@@ -122,7 +130,10 @@ export const Register = () => {
               </Link>
             </p>
             <p className="text-center text text-sm mt-4">Or sign in with</p>
-            <button className="flex justify-center items-center mt-4 ">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex justify-center items-center mt-4 "
+            >
               <FaGoogle className="text-2xl mb-4" />
             </button>
           </div>
