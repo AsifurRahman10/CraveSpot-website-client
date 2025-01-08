@@ -15,7 +15,7 @@ export const RecommendationCard = ({ food }) => {
     if (user && user.email) {
       // sent the data to database
       const cartItem = { menuID: _id, email: user.email, image, name, price };
-      axiosSecure.post("/users", cartItem).then((res) => {
+      axiosSecure.post("/carts", cartItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({

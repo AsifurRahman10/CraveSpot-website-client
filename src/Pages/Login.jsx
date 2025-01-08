@@ -1,4 +1,3 @@
-import { FaGoogle } from "react-icons/fa";
 import loginImg from "../assets/others/authentication2.png";
 import {
   loadCaptchaEnginge,
@@ -8,11 +7,13 @@ import {
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { SocialLogin } from "../Components/SocialLogin";
 export const Login = () => {
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const captchaRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(location);
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -28,17 +29,6 @@ export const Login = () => {
     }
   };
 
-  // google login
-  const handleGoogleLogin = () => {
-    googleLogin().then((res) => {
-      if (location.state) {
-        navigate(location.state);
-      } else {
-        navigate("/");
-      }
-    });
-  };
-
   // handle login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -52,11 +42,7 @@ export const Login = () => {
         text: "Login success",
         icon: "success",
       });
-      if (location.state) {
-        navigate(location.state);
-      } else {
-        navigate("/");
-      }
+      navigate(location.state?.from || "/");
     });
   };
 
@@ -129,13 +115,9 @@ export const Login = () => {
                 <span className=" font-semibold">Create a New Account</span>
               </Link>
             </p>
-            <p className="text-center text text-sm mt-4">Or sign in with</p>
-            <button
-              onClick={handleGoogleLogin}
-              className="flex justify-center items-center mt-4 "
-            >
-              <FaGoogle className="text-2xl mb-4" />
-            </button>
+
+            {/* social login */}
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

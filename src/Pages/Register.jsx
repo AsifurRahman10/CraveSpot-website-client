@@ -5,8 +5,11 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useAxiosPublic } from "../Hooks/useAxiosPublic";
+import { SocialLogin } from "../Components/SocialLogin";
 
 export const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserdata } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
@@ -20,20 +23,18 @@ export const Register = () => {
         return updateUserdata(data.name, data.image);
       })
       .then(() => {
-        navigate("/");
-        Swal.fire({
-          title: "User successfully registered",
-          icon: "success",
-          draggable: true,
+        const userData = { name: data.name, email: data.email };
+        axiosPublic.post("/user", userData).then((res) => {
+          if (res.data.insertedId) {
+            navigate("/");
+            Swal.fire({
+              title: "User successfully registered",
+              icon: "success",
+              draggable: true,
+            });
+          }
         });
       });
-  };
-
-  // google login
-  const handleGoogleLogin = () => {
-    googleLogin().then((res) => {
-      navigate("/");
-    });
   };
   return (
     <div className="bg-authBg min-h-screen bg-cover bg-center flex items-center justify-center">
@@ -129,13 +130,7 @@ export const Register = () => {
                 <span className="font-semibold"> Sign in now</span>
               </Link>
             </p>
-            <p className="text-center text text-sm mt-4">Or sign in with</p>
-            <button
-              onClick={handleGoogleLogin}
-              className="flex justify-center items-center mt-4 "
-            >
-              <FaGoogle className="text-2xl mb-4" />
-            </button>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
