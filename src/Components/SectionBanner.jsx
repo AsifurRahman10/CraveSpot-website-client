@@ -4,7 +4,7 @@ export const SectionBanner = ({ image, title, para, height }) => {
   return (
     <Parallax bgImage={image} strength={500} blur={3}>
       <div
-        className={`hero relative flex flex-col items-center justify-center ${height} bg-cover bg-center`}
+        className={`hero relative flex flex-col items-center justify-center ${height} bg-cover bg-center z-0`}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-50 w-11/12 md:w-3/4 mx-auto h-3/4 md:h-1/2 my-auto"></div>

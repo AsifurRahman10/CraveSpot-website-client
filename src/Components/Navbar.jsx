@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { IoCartOutline } from "react-icons/io5";
+import { useCart } from "../Hooks/useCart";
 
 export const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [cart] = useCart();
   const navList = (
     <>
       <Link to={"/"}>
@@ -22,6 +25,14 @@ export const Navbar = () => {
       <Link to={"/orderFood/salad"}>
         <li>Order Food</li>
       </Link>
+      <Link to={"/dashboard/cart"}>
+        <li>
+          <button className="btn">
+            <IoCartOutline className="text-2xl" />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </li>
+      </Link>
     </>
   );
   return (
@@ -33,7 +44,7 @@ export const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow absolute"
           >
             {navList}
           </ul>
@@ -53,7 +64,7 @@ export const Navbar = () => {
       <div className="navbar-end space-x-6">
         {/* Navigation menu for large screens */}
         <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 space-x-6 text-white font-bold">
+          <ul className="menu menu-horizontal px-1 space-x-6 text-white font-bold items-center">
             {navList}
           </ul>
         </div>

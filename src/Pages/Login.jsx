@@ -7,11 +7,12 @@ import {
 } from "react-simple-captcha";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
   const captchaRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -30,7 +31,11 @@ export const Login = () => {
   // google login
   const handleGoogleLogin = () => {
     googleLogin().then((res) => {
-      navigate("/");
+      if (location.state) {
+        navigate(location.state);
+      } else {
+        navigate("/");
+      }
     });
   };
 
@@ -47,7 +52,11 @@ export const Login = () => {
         text: "Login success",
         icon: "success",
       });
-      navigate("/");
+      if (location.state) {
+        navigate(location.state);
+      } else {
+        navigate("/");
+      }
     });
   };
 
