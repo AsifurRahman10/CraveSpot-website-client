@@ -72,7 +72,10 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/allUser" className="flex items-center gap-3">
+                <NavLink
+                  to="/dashboard/allUser"
+                  className="flex items-center gap-3"
+                >
                   <span>
                     <FaUsers className="text-lg" />
                   </span>
