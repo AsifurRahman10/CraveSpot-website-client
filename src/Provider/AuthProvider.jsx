@@ -10,12 +10,14 @@ import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/Firebase.init";
 
 import { GoogleAuthProvider } from "firebase/auth";
+import { useAxiosPublic } from "../Hooks/useAxiosPublic";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -55,11 +57,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setLoading(false);
         setUser(currentUser);
+        const userInfo = { email: currentUser?.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("Access-token", res.data.token);
+          }
+        });
       } else {
+        localStorage.removeItem("Access-token");
         setUser(null);
       }
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);

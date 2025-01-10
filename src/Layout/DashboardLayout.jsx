@@ -13,9 +13,10 @@ import { ImSpoonKnife } from "react-icons/im";
 import { IoBag, IoMenu } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import { useAdmin } from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/* sidebar */}
@@ -41,7 +42,10 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="flex items-center gap-3">
+                <NavLink
+                  to="/dashboard/addItem"
+                  className="flex items-center gap-3"
+                >
                   <span>
                     <ImSpoonKnife className="text-lg" />
                   </span>
@@ -49,7 +53,10 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="flex items-center gap-3">
+                <NavLink
+                  to="/dashboard/manageItems"
+                  className="flex items-center gap-3"
+                >
                   <span>
                     <FaList className="text-lg" />
                   </span>
