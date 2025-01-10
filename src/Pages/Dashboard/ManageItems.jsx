@@ -1,16 +1,14 @@
 import Swal from "sweetalert2";
 import { Title } from "../../Components/Title";
-import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
 import { useMenu } from "../../Hooks/useMenu";
 import { FaTrash } from "react-icons/fa";
 import { LuSquarePen } from "react-icons/lu";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 export const ManageItems = () => {
-  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-  const menu = useMenu();
-  const allItems = menu[0];
+  const [menu, , refetch] = useMenu();
 
   // delete a item
   const handleDeleteFood = (id) => {
@@ -27,6 +25,7 @@ export const ManageItems = () => {
         const res = await axiosSecure.delete(`/menu/${id}`);
         console.log(res);
         if (res.data.deletedCount > 0) {
+          refetch();
           Swal.fire({
             title: "Deleted!",
             text: "Item has been deleted",
@@ -65,7 +64,7 @@ export const ManageItems = () => {
             </tr>
           </thead>
           <tbody>
-            {allItems.map((item, idx) => (
+            {menu.map((item, idx) => (
               <tr key={idx} className="">
                 <th>
                   <label>{idx + 1}</label>
@@ -85,12 +84,11 @@ export const ManageItems = () => {
                 <td className="font-bold">{item.name}</td>
                 <td>$ {item.price}</td>
                 <th>
-                  <button
-                    // onClick={() => handleDeleteFood(item._id)}
-                    className="btn btn-ghost bg-[#D1A054] btn-md"
-                  >
-                    <LuSquarePen className="text-white" />
-                  </button>
+                  <Link to={`/dashboard/updateItem/${item._id}`}>
+                    <button className="btn btn-ghost bg-[#D1A054] btn-md">
+                      <LuSquarePen className="text-white" />
+                    </button>
+                  </Link>
                 </th>
                 <th>
                   <button
