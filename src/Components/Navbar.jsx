@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { IoCartOutline } from "react-icons/io5";
 import { useCart } from "../Hooks/useCart";
+import { useAdmin } from "../Hooks/useAdmin";
 
 export const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [cart] = useCart();
+  const [isAdmin] = useAdmin();
   const navList = (
     <>
       <Link to={"/"}>
@@ -25,7 +27,11 @@ export const Navbar = () => {
       <Link to={"/orderFood/salad"}>
         <li>Order Food</li>
       </Link>
-      <Link to={"/dashboard/cart"}>
+      <Link
+        to={`${
+          user && isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"
+        }`}
+      >
         <li>
           <button className="btn">
             <IoCartOutline className="text-2xl" />

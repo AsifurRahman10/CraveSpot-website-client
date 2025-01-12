@@ -81,14 +81,12 @@ export const CheckoutForm = () => {
         console.log(paymentData);
         const res = await axiosSecure.post("/paymentHistory", paymentData);
         refetch();
-        if (res.data.insertedId) {
-          Swal.fire({
-            title: "Good job!",
-            text: "You payment has been successful",
-            icon: "success",
-          });
-          navigate("/dashboard/cart");
-        }
+        navigate("/dashboard/cart");
+        Swal.fire({
+          title: "Good job!",
+          text: "You payment has been successful",
+          icon: "success",
+        });
       }
     }
   };

@@ -8,6 +8,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SocialLogin } from "../Components/SocialLogin";
+import Swal from "sweetalert2";
 export const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const captchaRef = useRef(null);
