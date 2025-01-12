@@ -110,7 +110,9 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menu/${params.id}`),
+          fetch(
+            `https://crave-spot-website-server-pcaqifa9f.vercel.app/menu/${params.id}`
+          ),
       },
     ],
   },

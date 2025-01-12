@@ -1,9 +1,9 @@
 export const Footer = () => {
   return (
     <footer>
-      <div className="footer text-white flex gap-0 items-stretch">
+      <div className="footer text-white flex gap-0 items-stretch flex-col md:flex-row">
         {/* First div */}
-        <aside className="bg-[#1F2937] w-1/2 py-10 md:py-20 flex flex-col items-end text-center pr-20">
+        <aside className="bg-[#1F2937] w-full md:w-1/2  py-10 md:py-20 flex flex-col items-end text-center pr-20">
           <p>
             <span className="text-2xl font-bold textTitle">
               CraveSpot Limited
@@ -18,7 +18,7 @@ export const Footer = () => {
         </aside>
 
         {/* Second div */}
-        <div className="bg-[#111827] w-1/2 py-10 md:py-20 pl-20 flex flex-col">
+        <div className="bg-[#111827] w-full md:w-1/2 py-10 md:py-20 pl-20 flex flex-col ">
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
             {/* Social Media Links */}

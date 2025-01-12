@@ -45,21 +45,6 @@ export const PaymentHistory = () => {
                   <td>$ {item.price}</td>
                   <td>{moment(item.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
                   <td>{item.transactionId}</td>
-                  {/* <th>
-                    <Link to={`/dashboard/updateItem/${item._id}`}>
-                      <button className="btn btn-ghost bg-[#D1A054] btn-md">
-                        <LuSquarePen className="text-white" />
-                      </button>
-                    </Link>
-                  </th> */}
-                  {/* <th>
-                    <button
-                      onClick={() => handleDeleteFood(item._id)}
-                      className="btn btn-ghost bg-[#B91C1C] btn-md"
-                    >
-                      <FaTrash className="text-white" />
-                    </button>
-                  </th> */}
                 </tr>
               ))}
             </tbody>

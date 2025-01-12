@@ -106,7 +106,10 @@ const DashboardLayout = () => {
             {/* user list */}
             <ul className="mt-14 textTitle ml-4 md:ml-12 space-y-8 pb-6">
               <li>
-                <NavLink to="/" className="flex items-center gap-3">
+                <NavLink
+                  to="/dashboard/userHome"
+                  className="flex items-center gap-3"
+                >
                   <span>
                     <FaHome className="text-lg" />
                   </span>

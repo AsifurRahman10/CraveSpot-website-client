@@ -15,9 +15,11 @@ export const Testimonial = () => {
   const [data, setData] = useState([]);
   console.log(data);
   useEffect(() => {
-    axios.get("http://localhost:5000/reviews").then((res) => {
-      setData(res.data);
-    });
+    axios
+      .get("https://crave-spot-website-server-pcaqifa9f.vercel.app/reviews")
+      .then((res) => {
+        setData(res.data);
+      });
   }, []);
   return (
     <div className="w-11/12 md:w-9/12 mx-auto my-10 md:my-20">
