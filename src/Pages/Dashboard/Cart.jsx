@@ -3,6 +3,7 @@ import { Title } from "../../Components/Title";
 import { useCart } from "../../Hooks/useCart";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,7 +46,17 @@ export const Cart = () => {
           <h3 className="text-neutral md:text-lg lg:text-3xl font-bold">
             total price: ${totalPrice}
           </h3>
-          <button className="btn bg-[#D1A054] text-white font-bold">PAY</button>
+          {cart.length === 0 ? (
+            <button className="btn bg-[#D1A054] text-white font-bold" disabled>
+              PAY
+            </button>
+          ) : (
+            <Link to={"/dashboard/payment"}>
+              <button className="btn bg-[#D1A054] text-white font-bold">
+                PAY
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* table part */}

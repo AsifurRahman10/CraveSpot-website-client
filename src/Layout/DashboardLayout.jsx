@@ -14,9 +14,11 @@ import { IoBag, IoMenu } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { useAdmin } from "../Hooks/useAdmin";
+import { useCart } from "../Hooks/useCart";
 
 const DashboardLayout = () => {
   const [isAdmin] = useAdmin();
+  const [cart] = useCart();
   return (
     <div className="flex">
       {/* sidebar */}
@@ -122,7 +124,10 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="flex items-center gap-3">
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className="flex items-center gap-3"
+                >
                   <span>
                     <FaWallet className="text-lg" />
                   </span>
@@ -139,7 +144,9 @@ const DashboardLayout = () => {
                   <span>
                     <FaShoppingCart className="text-lg" />
                   </span>
-                  <p className="font-medium text-lg leading-none">my cart</p>
+                  <p className="font-medium text-lg leading-none">
+                    my cart ({cart.length})
+                  </p>
                 </NavLink>
               </li>
               <li>
