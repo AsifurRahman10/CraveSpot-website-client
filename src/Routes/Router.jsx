@@ -111,7 +111,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://crave-spot-website-server-pcaqifa9f.vercel.app/menu/${params.id}`
+            `https://crave-spot-website-server.vercel.app/menu/${params.id}`
           ),
       },
     ],

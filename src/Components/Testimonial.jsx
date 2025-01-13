@@ -10,17 +10,21 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { FaQuoteLeft } from "react-icons/fa";
 import axios from "axios";
+import { useAxiosPublic } from "../Hooks/useAxiosPublic";
 
 export const Testimonial = () => {
   const [data, setData] = useState([]);
-  console.log(data);
-  useEffect(() => {
-    axios
-      .get("https://crave-spot-website-server-pcaqifa9f.vercel.app/reviews")
-      .then((res) => {
-        setData(res.data);
-      });
-  }, []);
+  const axiosPublic = useAxiosPublic();
+  axiosPublic.get("/reviews").then((res) => {
+    setData(res.data);
+  });
+  // useEffect(() => {
+  //   axios
+  //     .get("https://crave-spot-website-server.vercel.app/reviews")
+  //     .then((res) => {
+  //       setData(res.data);
+  //     });
+  // }, []);
   return (
     <div className="w-11/12 md:w-9/12 mx-auto my-10 md:my-20">
       <Title title={"TESTIMONIALS"} para={"---What Our Clients Say---"}></Title>

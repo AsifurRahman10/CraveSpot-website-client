@@ -15,7 +15,7 @@ const pageNumber = [...Array(totalPage).keys()];
 
 // getting data count
 useEffect(() => {
-axios.get("https://crave-spot-website-server-pcaqifa9f.vercel.app/menuCount").then((res) => {
+axios.get("https://crave-spot-website-server.vercel.app/menuCount").then((res) => {
 setCount(res.data.count);
 });
 }, []);
@@ -24,7 +24,7 @@ setCount(res.data.count);
 useEffect(() => {
 axios
 .get(
-`https://crave-spot-website-server-pcaqifa9f.vercel.app/menu?page=${currentPage}&limit=${itemPerPage}`
+`https://crave-spot-website-server.vercel.app/menu?page=${currentPage}&limit=${itemPerPage}`
 )
 .then((res) => {
 setMenu(res.data);

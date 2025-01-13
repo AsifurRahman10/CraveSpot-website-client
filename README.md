@@ -4,6 +4,8 @@ CraveSpot Restaurant is a full-stack web application designed to provide users w
 
 ---
 
+## live link - https://comforting-croquembouche-7c40a9.netlify.app/
+
 ## Features
 
 ### User Features

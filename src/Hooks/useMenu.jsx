@@ -8,7 +8,7 @@ export const useMenu = () => {
   // const [menu, setMenu] = useState([]);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
-  //   axios.get("https://crave-spot-website-server-pcaqifa9f.vercel.app/menu").then((res) => {
+  //   axios.get("https://crave-spot-website-server.vercel.app/menu").then((res) => {
   //     setMenu(res.data);
   //     setLoading(false);
   //   });
